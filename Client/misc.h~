@@ -1,0 +1,39 @@
+/**
+ * Cabecera del módulo de misceláneas - Cliente de Dynarmor
+ *
+ * Copyright © 2015 Ariel Favio Carrizo. Todos los derechos reservados.
+ * 
+ * Queda terminantemente prohibida la reproducción parcial y/o total, y
+ * la creación de trabajos derivados sin la expresa autorización del autor.
+ * 
+ * Éste archivo es propietario y confidencial.
+ */
+
+#ifndef _SECUREIO_H
+#define _SECUREIO_H
+
+#include <string.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <openssl/err.h>
+#include <errno.h>
+
+typedef struct {
+	char *data;
+	uint32_t size;
+} buffer;
+
+bool secureread(int descriptor, char *data, int32_t size);
+bool secure_int32_read(int descriptor, int32_t *data);
+bool secure_int32_write(int descriptor, int32_t data);
+bool send_data(int descriptor, char *data, uint32_t size, char *msg_err);
+
+char * encodedtobase64(const char *input, int32_t length);
+char * base64topem(char *input, char *pem_header, char *pem_foot);
+
+#endif

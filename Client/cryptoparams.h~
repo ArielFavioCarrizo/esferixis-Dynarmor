@@ -1,0 +1,18 @@
+/**
+ * Cabecera de parámetros criptográficos - Cliente de Dynarmor
+ *
+ * Copyright © 2015 Ariel Favio Carrizo. Todos los derechos reservados.
+ * 
+ * Queda terminantemente prohibida la reproducción parcial y/o total, y
+ * la creación de trabajos derivados sin la expresa autorización del autor.
+ * 
+ * Éste archivo es propietario y confidencial.
+ */
+
+#ifndef _CRYPTOPARAMS
+#define _CRYPTOPARAMS
+
+#define AES_KEY_BSIZE 256
+#define AES_IV_BSIZE 128
+
+#endif

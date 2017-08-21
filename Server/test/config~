@@ -1,0 +1,4 @@
+ListenAddress localhost
+Port 2250
+PublicRSAKeyFile test/keys/publickey.der
+PrivateRSAKeyFileS test/keys/privatekey.der

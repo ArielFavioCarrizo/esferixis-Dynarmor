@@ -1,0 +1,22 @@
+/**
+ * Cabecera del módulo de HMAC - Cliente de Dynarmor
+ *
+ * Copyright © 2015 Ariel Favio Carrizo. Todos los derechos reservados.
+ * 
+ * Queda terminantemente prohibida la reproducción parcial y/o total, y
+ * la creación de trabajos derivados sin la expresa autorización del autor.
+ * 
+ * Éste archivo es propietario y confidencial.
+ */
+
+#ifndef _HMAC
+#define _HMAC
+
+typedef struct hmac_buffer hmac_buffer;
+
+void hmac_init(const EVP_MD *md, char *key);
+hmac_buffer * hmac_createbuffer();
+char * hmac_plaintextbuffer(size_t size);
+void hmac_destroybuffer(hmac_buffer *buffer);
+
+#endif

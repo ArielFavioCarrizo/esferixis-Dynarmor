@@ -1,0 +1,15 @@
+/**
+ * Módulo de HMAC - Cliente de Dynarmor
+ *
+ * Copyright © 2015 Ariel Favio Carrizo. Todos los derechos reservados.
+ * 
+ * Queda terminantemente prohibida la reproducción parcial y/o total, y
+ * la creación de trabajos derivados sin la expresa autorización del autor.
+ * 
+ * Éste archivo es propietario y confidencial.
+ */
+
+#include "hmac.h"
+#include "misc.h"
+
+struct hmac_buffer;

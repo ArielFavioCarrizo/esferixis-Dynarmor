@@ -1,0 +1,45 @@
+/**
+ * post: Devuelve 0 si se pudo efectuar con éxito, 0 si no pudo
+ */
+bool secureread(int descriptor, char *data, int32_t size) {
+	int32_t read_n = 0;
+	int32_t aux = 0;
+	
+	errno = 0;
+	
+	while ( read_n < size ) {
+		aux = read( descriptor, data + read_n, size - read_n);
+		
+		if ( aux > 0 ) {
+			read_n += aux;
+		}
+		else if ( aux < 0 ) {
+			fprintf(stderr, "Unexpected read error: %s\n", strerror(errno) );
+			return false;
+		} else if ( ( aux == 0 ) && ( read_n != size ) ) {
+			fprintf(stderr, "Unexpected closed connection\n");
+			return false;
+		}
+	}
+	return true;
+}
+
+bool secure_int32_read(int descriptor, int32_t *data) {
+	if ( secureread(descriptor, (char *) data, sizeof(int32_t)) ) {
+		*data = ntohl(*data);
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool secure_int32_write(int descriptor, int32_t data) {
+	data = htonl(data);
+	if ( securewrite(descriptor, (char *) &data, sizeof(int32_t)) ) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

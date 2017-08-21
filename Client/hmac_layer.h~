@@ -1,0 +1,30 @@
+/**
+ * Cabecera de la capa de HMAC - Cliente de Dynarmor
+ *
+ * Copyright © 2015 Ariel Favio Carrizo. Todos los derechos reservados.
+ * 
+ * Queda terminantemente prohibida la reproducción parcial y/o total, y
+ * la creación de trabajos derivados sin la expresa autorización del autor.
+ * 
+ * Éste archivo es propietario y confidencial.
+ */
+
+#ifndef _HMAC
+#define _HMAC
+
+#include <openssl/buffer.h>
+#include <openssl/evp.h>
+#include "misc.h"
+
+typedef struct hmac_layer_buffer hmac_layer_buffer;
+
+void hmac_layer_init(EVP_MD_CTX *mdctx_parameter, const EVP_MD *md_parameter);
+char *hmac_layer_getkey(size_t *size);
+hmac_layer_buffer * hmac_layer_createbuffer();
+char * hmac_layer_buffer_message(hmac_layer_buffer *buffer, size_t size);
+char * hmac_layer_buffer_encode(hmac_layer_buffer *buffer, size_t *encode_size);
+char * hmac_layer_buffer_decode(hmac_layer_buffer *buffer, size_t *messageSize);
+void hmac_layer_buffer_destroy(hmac_layer_buffer *buffer);
+void hmac_layer_destroy();
+
+#endif
